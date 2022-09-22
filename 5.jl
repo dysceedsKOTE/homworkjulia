@@ -35,10 +35,42 @@ elseif (count == 14)
     hz = 0
     end
 elseif (count != 14)
-
+    break;
 end
+end
+end
+#ВВЕРХ 0 ВНИЗ 2 ВЛЕВО 3 ВПРАВО 1
+function paintnextborder()
+hz = 1
+hzup = 0
+while true
+    if (isborder(r,HorizonSide(0)) == true)
+        hzup = 0
+        putmarker!(r)
+        move!(r,HorizonSide(3))
+    end
+    if (isborder(r,HorizonSide(3)) == true)
+        hzup = 3
+        putmarker!(r)
+        move!(r,HorizonSide(2))
+    end
+    if (isborder(r,HorizonSide(2)) == true)
+        hzup = 2
+        putmarker!(r)
+        move!(r,HorizonSide(1))
+    end
+    if (isborder(r,HorizonSide(1)) == true)
+        hzup = 1
+        putmarker!(r)
+        move!(r,HorizonSide(0))
+    end
+    if ((isborder(r,HorizonSide(0)) == false) && (isborder(r,HorizonSide(1)) == false) && (isborder(r,HorizonSide(2)) == false) && (isborder(r,HorizonSide(3)) == false))
+        putmarker!(r)
+        move!(r,HorizonSide(hzup))
+    end
 end
 end
 
 gobok(r)
 searchp()
+paintnextborder()
